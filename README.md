@@ -57,6 +57,12 @@
 
 ###
 
+###
+
+<h2 align="left">What is a commit?</h2>
+
+###
+
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/parasite432/parasite432/output/pacman-contribution-graph-dark.svg">
