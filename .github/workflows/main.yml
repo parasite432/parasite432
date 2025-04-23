@@ -1,39 +1,39 @@
-name: Generate Pac-Man Game
+# name: Generate Pac-Man Game
 
-on:
-  schedule:
-    - cron: "0 0 * * *" # Every 24 hours
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+# on:
+#   schedule:
+#     - cron: "0 0 * * *" # Every 24 hours
+#   workflow_dispatch:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  generate:
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+# jobs:
+#   generate:
+#     permissions:
+#       contents: write
+#     runs-on: ubuntu-latest
+#     timeout-minutes: 5
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
 
-      - name: Generate pacman-contribution-graph.svg
-        uses: abozanona/pacman-contribution-graph@main
-        with:
-          github_user_name: ${{ github.repository_owner }}
+#       - name: Generate pacman-contribution-graph.svg
+#         uses: abozanona/pacman-contribution-graph@main
+#         with:
+#           github_user_name: ${{ github.repository_owner }}
 
-      - name: Move SVG to dist/
-        run: |
-          mkdir -p dist
-          mv pacman-contribution-graph.svg dist/
+#       - name: Move SVG to dist/
+#         run: |
+#           mkdir -p dist
+#           mv pacman-contribution-graph.svg dist/
 
-      - name: Push pacman-contribution-graph.svg to output branch
-        uses: crazy-max/ghaction-github-pages@v2.1.3
-        with:
-          target_branch: output
-          build_dir: dist
-          commit_message: "Update Pac-Man contribution graph"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Push pacman-contribution-graph.svg to output branch
+#         uses: crazy-max/ghaction-github-pages@v2.1.3
+#         with:
+#           target_branch: output
+#           build_dir: dist
+#           commit_message: "Update Pac-Man contribution graph"
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
